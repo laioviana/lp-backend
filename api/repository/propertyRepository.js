@@ -5,38 +5,6 @@ function PropertyRepository() {
     this.data = JSON.parse(fs.readFileSync(__dirname + '/../data/data.json'));
 }
 
-PropertyRepository.prototype.findByNeighborhood = async function (neighborhood) {
-    return new Promise((resolve, reject) => {
-        const property = this.data
-            .filter(p => p.overview.neighborhood == neighborhood);
-        resolve(property);
-    });
-}
-
-PropertyRepository.prototype.findByCity = async function (city) {
-    return new Promise((resolve, reject) => {
-        const property = this.data
-            .filter(p => p.overview.city == city);
-        resolve(property);
-    });
-}
-
-PropertyRepository.prototype.findByZipcode = async function (zipcode) {
-    return new Promise((resolve, reject) => {
-        const property = this.data
-            .filter(p => p.overview.zipcode == zipcode);
-        resolve(property);
-    });
-}
-
-PropertyRepository.prototype.findByType = async function (type) {
-    return new Promise((resolve, reject) => {
-        const property = this.data
-            .filter(p => p.facts.type == type);
-        resolve(property);
-    });
-}
-
 PropertyRepository.prototype.findAllBySearchPaged = function (search, page, size) {
     return new Promise((resolve, reject) => {
         const allBySearch = this.data
